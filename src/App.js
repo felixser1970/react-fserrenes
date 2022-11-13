@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import Tarealist from  './componentes/Tarea'
+import{ Tarealist } from  './componentes/Tarea'
 import { v4 as uuidv4 } from 'uuid'
 //import Tarea from './componentes/Tarea';
 

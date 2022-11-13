@@ -62,7 +62,7 @@ function Tarea(props) {
 
 
 // .... COMPONENTE TAREALIST
-export default function Tarealist( {tareas, accionarTarea, nameTarea} ) {
+export const Tarealist  = ( {tareas, accionarTarea, nameTarea} )  => {
   return (
     tareas.map( tareaIndividual => <Tarea key={tareaIndividual.id} accionarTarea={accionarTarea} nameTarea={nameTarea} tareaIndividual={tareaIndividual}/> )
   )
