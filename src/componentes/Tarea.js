@@ -64,9 +64,6 @@ function Tarea(props) {
 // .... COMPONENTE TAREALIST
 export default function Tarealist( {tareas, accionarTarea, nameTarea} ) {
   return (
-    tareas.map( tareaIndividual  => {
-      return  <Tarea key={tareaIndividual.id} accionarTarea={accionarTarea} nameTarea={nameTarea} tareaIndividual={tareaIndividual}/>;
-    
-    })
+    tareas.map( tareaIndividual => <Tarea key={tareaIndividual.id} accionarTarea={accionarTarea} nameTarea={nameTarea} tareaIndividual={tareaIndividual}/> )
   )
 }
