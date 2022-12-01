@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom"
+import DetalleLibro from "./componentes/DetalleLibro";
+import Web from './componentes/Web'
+import { Error } from  './paginas/Error';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Web />} />
+        <Route path="/bibliotecas" element={<Web />} />
+        <Route path="/libro/:id" element={<DetalleLibro />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </>
   );
+
 }
 
 export default App;
+
