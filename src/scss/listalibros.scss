@@ -1,0 +1,131 @@
+
+@import './reset.scss';
+@import './basico.scss';
+
+
+.contenedor-busqueda-full {
+  display: flex;
+  width: 100%;
+  justify-content:flex-start;
+  flex-direction: column;
+  align-items: center;
+  min-height: 90vh;
+}
+
+.contenedor-busqueda-scroll {
+  display: flex;
+  width: 90%;
+  justify-content:flex-start;
+  flex-direction: column;
+  align-items: center;
+  min-height: 90vh;
+}
+
+.contenedor-paginas {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 80%;
+  flex-wrap: wrap;
+  margin: 60px 0px -8px 0px;
+  //background-color: red;
+
+
+}
+.contenedor-libros {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 80%;
+  background-color: transparent;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin: 0px 0px;
+
+}
+
+.contenedor-libros-scroll {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  background-color: transparent;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin: 25px 0px;
+
+}
+
+
+.ficha-libro {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  gap:20px;
+  box-shadow: $whiteWtransp 0px 3px 8px;
+  background-color: $white;
+  font-family: $gotan;
+  width: 128px;
+
+  img {
+     margin: 0px;
+     width: 128px;
+     height: 204px;
+     transition: all 0.5s linear;
+
+     &:hover {
+      transform: scale(0.9);
+      opacity: 0.7;
+      cursor: pointer;
+     }
+
+  }
+  &__titulo {
+    font-size: 12px;
+    color:rgb(51, 8, 17);
+    margin: 0px 4px;
+  }
+  &__autor {
+    font-family: $montserrat;
+    font-size: 10px;
+    text-align: center;
+    color:  #959f9f;
+    line-height: 12px;
+    margin: 0px 4px 8px 4px;
+    
+  }
+
+}
+
+.contenedor-busqueda {
+  background-color: #ccc4e7;
+  display: grid;
+  width:400px;
+  border-radius:18px;
+  padding: 20px;
+
+    h2 {
+      text-align: center;
+    }
+    .col-lg-2 {
+       width: 70px;
+       font-size: 14px;
+       font-family: $gotan;
+       color: rgb(126, 9, 48);
+       margin: 5px 10px;
+    }
+    .col-lg-10 {
+      background-color: rgb(236, 236, 202);
+      width: 279px;
+
+
+    }
+  &__resultado {
+    margin-top:10px;
+    text-align: center;
+    color:rgb(53, 48, 48);
+    font-weight: bold;
+  }
+}
+
