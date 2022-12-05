@@ -23,7 +23,7 @@ Aparacerá un mensaje que esta listo y corriento en localhost puerto *3002
 Es necesario para que el servidor arranque correctamente instalar las dependencias
 
 	npm i express
-	npm i cookie-parse
+	npm i cookie-parser
 	
 ## Script para React
 
