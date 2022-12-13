@@ -43,7 +43,7 @@ export const Usuario = (props) => {
                     <input type="password" name='nombre' id='nombre' ref={passRf} defaultValue={''} required />
                     <input type="submit" name='go' id='go' value='ACCESO' onClick={ e => login(e, userRf.current.value, passRf.current.value)} />
               </form>
-              <div className='usuario__registro'><a  href='#' onClick={e => Registro_user(e, PAGINA_REGISTRO)}>Registro</a> </div>
+              <div><a href='#' onClick={e => Registro_user(e, PAGINA_REGISTRO)}>Registro</a> </div>
               </>
             :
             <>

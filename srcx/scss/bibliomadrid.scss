@@ -1,0 +1,12 @@
+.contenedor-madrid {
+  display: flex;
+  width: 100%;
+  justify-content:flex-start;
+  flex-direction: column;
+  align-items: center;
+  min-height: 90vh;
+
+  tr:nth-child(even){
+    background-color:   #d4cde9;
+  }
+}

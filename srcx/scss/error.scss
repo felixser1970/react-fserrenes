@@ -2,8 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700');
 @import url('https://fonts.googleapis.com/css?family=Catamaran:400,800');
-@import './basico.scss';
-
 .error-container {
   text-align: center;
   font-size: 180px;
@@ -122,20 +120,7 @@ h1 {
   text-align: center;
 }
 .link-container {
-  width: 350px;
-  margin: 60px;
-  background-color: rgb(71, 67, 67);
-  color:white;
-  font-family: $gotan;
-  font-size:18px;
   text-align: center;
-  line-height: 40px;
-
-  a:link, a:visited, a:active {
-    text-decoration:none;
-    color:#bbb
-}
-
 }
 a.more-link {
   text-transform: uppercase;

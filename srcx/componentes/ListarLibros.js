@@ -66,7 +66,6 @@ export const ListarLibros = () => {
         <div className='contenedor-libros'>
           {libros.lista.map((e, idx) => <Libro key={idx}  titulo={e.titulo} imagen={e.imagen.thumbnail} descripcion={e.descripcion} autor={e.autores} ident={e.id}/>)}
         </div>
-        <div className='contenedor-paginas'>{ libros.total > max? get_paginas(libros.total,libros.pag) : <></>}</div>
       </section>
 
     </>
