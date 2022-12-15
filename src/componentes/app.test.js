@@ -71,9 +71,11 @@ describe("Listado de Bibliotecas en Madrid",()=> {
   })
 })
 
+//  PARA PRUEBAS ASINCRÓNICAS.
+
 /* describe("Listado de Bibliotecas del Mundo", ()=> {
  
-  it("Biblioteca Principales",  async () => {
+  test("Biblioteca Principales",  async () => {
       render(
         <>
           <Uprov>
