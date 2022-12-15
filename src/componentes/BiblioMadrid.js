@@ -44,7 +44,7 @@ export const BiblioMadrid = () => {
             <tr>
               <td>#</td>
               <td>NOMBRE DE LA BIBLIOTECA</td>
-              <td>CALLE</td>
+              <td>DIRECCIÓN</td>
               <td>TELÉFONO</td>
             </tr>
         </thead>

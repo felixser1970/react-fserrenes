@@ -59,7 +59,7 @@ export const Usuario = (props) => {
 
 }
 
-export const Menus = ({lista}) => {
+/*export const Menus = ({lista}) => {
  
   const {estadoWeb,setUsuario,menu} = useUsuario()
 
@@ -86,4 +86,4 @@ export const Menus = ({lista}) => {
 
   )
   
-}
+}*/
