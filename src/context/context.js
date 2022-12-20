@@ -8,9 +8,9 @@ export const  Uprov = (props)  => {
 
   let  [estadoWeb, setUsuario] = useState({usuario:'',pagina:0});
   const  [menu, setMenu] = useState( [{titulo: 'Inicio', enlace: '#', private : false},
-                                      {titulo: 'Bibliotecas Madrid Capital', enlace: '#', private: false},
-                                      {titulo: 'Consultas de Libros con Paginación', enlace: '#', private : true},
-                                      {titulo: 'Consulta de Libros con Scroll', enlace: '#', private : true},
+                                      {titulo: 'Madrid', enlace: '#', private: false},
+                                      {titulo: 'Búsqueda I', enlace: '#', private : true},
+                                      {titulo: 'Búsqueda II', enlace: '#', private : true},
                                     ]);
 
   // .... recupera el usuario con el que se ha logeado el usuario con el que se ha lo
