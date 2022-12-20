@@ -43,7 +43,7 @@ export const Usuario = (props) => {
                     <input type="password" name='nombre' id='nombre' ref={passRf} defaultValue={''} required />
                     <input type="submit" name='go' id='go' value='ACCESO' onClick={ e => login(e, userRf.current.value, passRf.current.value)} />
               </form>
-              <div className='usuario__registro'><a  href='#' onClick={e => Registro_user(e, PAGINA_REGISTRO)}>Registro</a> </div>
+              <div className='usuario__registro'><a  href='#' onClick={e => Registro_user(e, PAGINA_REGISTRO)}>Registro&nbsp;</a> </div>
               </>
             :
             <>
@@ -59,31 +59,3 @@ export const Usuario = (props) => {
 
 }
 
-/*export const Menus = ({lista}) => {
- 
-  const {estadoWeb,setUsuario,menu} = useUsuario()
-
-  // función para satar a otro menu.
-  function cambioMenu(e, idx) {
-    e.preventDefault();
-    console.log('pagina='+idx)
-    console.log(menu);
-    setUsuario({usuario: estadoWeb.usuario, pagina:idx})
-  }
-
-  return (
-    <>
-      <section className='menus'>
-        <ul>
-          {
-            estadoWeb.usuario.length? menu.map((e,idx) => <li key={idx} style={{display: 'inline', marginRight: '30px'}}><a href="#" onClick={e => cambioMenu(e, idx)}>{e.titulo}</a></li>)
-            : (menu.filter((el) => !el.private )).map((e,idx) => <li key={idx} style={{display: 'inline', marginRight: '30px'}}><a href="#" onClick={e => cambioMenu(e, idx)}>{e.titulo}</a></li>) 
-          }
-        </ul>
-      </section>
-    
-    </>
-
-  )
-  
-}*/

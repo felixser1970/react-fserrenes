@@ -14,7 +14,7 @@ Además se ha realizado una consulta a la API de google books desde el servidor,
 
 Correnponde al fichero `server.js` que se encuentra en la carpeta *servidor. Para lanzar el servidor, que debe ser el paso previo:
 
-	`node server.js` 
+	node server.js 
 
 Aparacerá un mensaje que esta listo y corriento en localhost puerto *3002
 
@@ -43,6 +43,15 @@ Se usa enrutamiento, bootstrap y scroll infinito para mostras los resultados. Po
 
 Ejecuta el cliente React. Se debe arrancar antes el Servidor basado en nodejs.\
 Con [http://localhost:3000](http://localhost:3000) saldrá la página de React en el navegador.
+
+## TECNOLOGÍAS
+Se emplea NodeJs, express para el lado servidor. La gestión de usuario se realiza con cookie-parser.
+
+En el FrontEnd se usa React y contexto. Este último porque hay que guardar el usuario acreditado cuando se refresca la pantalla con sessionStorage.
+
+En los estilos se emplea SCSS porque permite estructurar de manera jerárquica.
+
+En las API, se emplea fetch para obtener datos de la API privada y pública.
 
 
 
