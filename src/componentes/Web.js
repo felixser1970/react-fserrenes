@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 //import ReactDOM from 'react-dom/client';
-import { Encabezado, Usuario, Menus } from './encabezado.js'
+import { Encabezado, Usuario} from './encabezado.js'
+import { Menus} from './Menus.js'
 import { Pie } from './Pie.js'
 import { ListaBiblio } from './ListaBiblio.js';
 import { BiblioMadrid } from './BiblioMadrid';
