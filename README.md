@@ -44,5 +44,14 @@ Se usa enrutamiento, bootstrap y scroll infinito para mostras los resultados. Po
 Ejecuta el cliente React. Se debe arrancar antes el Servidor basado en nodejs.\
 Con [http://localhost:3000](http://localhost:3000) saldrá la página de React en el navegador.
 
+## TECNOLOGÍAS
+Se emplea NodeJs, express para el lado servidor. La gestión de usuario se realiza con cookie-parser.
+
+En el FrontEnd se usa React y contexto. Este último porque hay que guardar el usuario acreditado cuando se refresca la pantalla con sessionStorage.
+
+En los estilos se emplea SCSS porque permite estructurar de manera jerárquica.
+
+En las API, se emplea fetch para obtener datos de la API privada y pública.
+
 
 
