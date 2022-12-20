@@ -14,7 +14,7 @@ Además se ha realizado una consulta a la API de google books desde el servidor,
 
 Correnponde al fichero `server.js` que se encuentra en la carpeta *servidor. Para lanzar el servidor, que debe ser el paso previo:
 
-	`node server.js` 
+	node server.js 
 
 Aparacerá un mensaje que esta listo y corriento en localhost puerto *3002
 
@@ -23,7 +23,7 @@ Aparacerá un mensaje que esta listo y corriento en localhost puerto *3002
 Es necesario para que el servidor arranque correctamente instalar las dependencias
 
 	npm i express
-	npm i cookie-parse
+	npm i cookie-parser
 	
 ## Script para React
 
