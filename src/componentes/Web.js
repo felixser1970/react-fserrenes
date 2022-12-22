@@ -17,16 +17,16 @@ function Web() {
   const { estadoWeb } = useUsuario();
   const miUser = <Usuario>{estadoWeb.usuario.length ? estadoWeb.usuario : 'Usuario Anónimo'}</Usuario>
 
-  // ... carga el componente que se precise para esa página
+ 
   const loadComponente = (idx, par = null) => {
     var myComp = null;
 
     switch (idx) {
-      case PAGINA_INICIO:              // ...listado de las mayores bibliotecas
+      case PAGINA_INICIO:             
         myComp = <ListaBiblio />
         break;
       case PAGINA_REGISTRO:
-        myComp = <Registro />        // ... registro de usuarios.
+        myComp = <Registro />        
         break;
       case PAGINA_MADRID:
         myComp = <BiblioMadrid />

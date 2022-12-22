@@ -14,14 +14,11 @@ export const ListaBiblio = (props) => {
     fetch("http://localhost:3002/bibliotecas", { credentials : 'include' })
     .then(res => res.json())
     .then(data =>  { 
-      // ATENCIÓN NO HAY usuario acreditado (no hay sesión abierta porque ha expirado su duración, OCULTO LA OPCION DE CONSULTAR LIBROS EN EL MENU Y
-      // VUELVO AL INICIO.
       if((data.u || null) &&  data.u === null ) {
         setUsuario({usuario:'',pagina: estadoWeb.pagina === pgx? 0: estadoWeb.pagina});
-        setMenu([...menu]);  // oculta las opciones si NO HAY SESSIÓN EN EL SERVIDOR PARA UN USUARIO.
+        setMenu([...menu]); 
       }   
-      console.log('Fin sesion='+data.u);
-      setListaBiblio(data.b)  // seteo la lista de bibliotecas  con los datos recibidos del API privada...
+      setListaBiblio(data.b)  
     })
   }
 
@@ -29,10 +26,9 @@ export const ListaBiblio = (props) => {
     fetchData() ; 
 
   
-  },[]);  // Este proceso se ejecuta  solo una vez, YA QUE TIENE UNA MATRIZ VÁCIO. En caso contrario se haria en cada enderizado
+  },[]);  
 
 
- // NOTA: Si no hay un usuario acreditado, se devuelve null, en caso contrario el nombre de usuario. se devuelve en milista.u
   return (
     <>
     <main className="biblio">

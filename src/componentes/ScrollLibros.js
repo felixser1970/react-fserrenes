@@ -9,8 +9,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 export const ScrollLibros = () => {
 
   const [libros, setLibros] = useState({ idx: 0, buscar: '', tipo: '', total: 0, pag: 0, lista: [] });
-  const { estadoWeb, setUsuario } = useUsuario()          //usuario que viene del contexto
-  const max = 40;         // maximo número de elemtos que se pueden biscar
+  const { estadoWeb, setUsuario } = useUsuario()         
+  const max = 40;         
 
 
   function get_lista(bus,tipoB,inic=libros.idx,actPg=libros.pag) {
@@ -19,8 +19,7 @@ export const ScrollLibros = () => {
     fetch('http://localhost:3002/consulta' + par, { credentials: 'include' })
       .then(res => res.json())
       .then(lbr => {
-        //console.log(lbr);
-        //alert('IDX='+libros.idx+' TOTAL='+libros.total+'PAR= '+par);
+       
         if ((lbr.total || null) && (lbr.total < 0)) {
           setUsuario({ usuario: '', pagina: 0 });
           window.location.assign('http://localhost:3000/bibliotecas'); // ... si la sesión ha expirado vuelvo a la página de inicio sin USUARIO logeado.
@@ -44,7 +43,7 @@ export const ScrollLibros = () => {
         <p></p>
   
         <InfiniteScroll
-            dataLength={libros.lista.length} //This is important field to render the next data
+            dataLength={libros.lista.length} 
             next={nuevaPagina}
             hasMore={libros.idx+max < libros.total? true : false}
             loader={<h4>Cargando ...</h4>}

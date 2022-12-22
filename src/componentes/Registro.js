@@ -9,8 +9,6 @@ export const Registro = () => {
   const [resultado, setResultado] = useState({txt:'',okUser:false,rtColor:'red'});
   let inUser = false;
   
-
-  // ... Comenzar Registro ...
   function evaluar(e) {
 
     const par = {

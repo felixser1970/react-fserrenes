@@ -17,11 +17,9 @@ export const Encabezado = (props) => {
 }
 
 export const Usuario = (props) => {
-  const {estadoWeb,login,logout,setUsuario} = useUsuario()          //usuario que viene del contexto
+  const {estadoWeb,login,logout,setUsuario} = useUsuario()         
   const userRf = useRef('');
   const passRf = useRef('');
-
-  //useEffect(() => {userRf.current.value = ''; passRf.current.value = ''});
 
   function Registro_user(e,idx) {
     e.preventDefault();
