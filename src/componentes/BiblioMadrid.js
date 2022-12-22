@@ -59,4 +59,3 @@ export const BiblioMadrid = () => {
   )
 }
 
-// {listaMadrid.map((e,idx) => <tr><td>{idx}</td><td><Link to={e.url}>{e.nombre}</Link></td><td>{e.calle}</td><td>{e.telefono}</td></tr>)}

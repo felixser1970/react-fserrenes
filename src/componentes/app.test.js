@@ -71,23 +71,6 @@ describe("Listado de Bibliotecas en Madrid",()=> {
   })
 })
 
-//  PARA PRUEBAS ASINCRÓNICAS.
 
-/* describe("Listado de Bibliotecas del Mundo", ()=> {
- 
-  test("Biblioteca Principales",  async () => {
-      render(
-        <>
-          <Uprov>
-            <ListaBiblio />
-          </Uprov>
-        </>
-      );
-      const rst =  await screen.findByText('Seattle Central Library')
-      //expect( await screen.findByText('Seattle Central Library')).toBeInTheDocument();
-
-  })
-})
-*/
 
 

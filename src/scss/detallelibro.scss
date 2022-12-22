@@ -7,7 +7,6 @@
     display: grid;
     grid-template-columns: 330px 1fr;
     grid-template-rows: 500px calc(110vh - 500px);
-    //align-items: center;
     width: 60vw;
     background-color: antiquewhite;
     gap: 15px;
@@ -112,8 +111,7 @@
   .contenedor-detalle {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 500px calc(110vh - 500px);
-    //align-items: center;
+    grid-template-rows: 300px 1fr;
     width: 60vw;
     background-color: antiquewhite;
     gap: 10px;

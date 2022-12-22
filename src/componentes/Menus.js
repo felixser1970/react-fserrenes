@@ -10,8 +10,6 @@ export const Menus = ({lista}) => {
   // función para satar a otro menu.
   function cambioMenu(e, idx) {
     e.preventDefault();
-    //console.log('pagina='+idx)
-    //console.log(menu);
     setUsuario({usuario: estadoWeb.usuario, pagina:idx})
   }
 

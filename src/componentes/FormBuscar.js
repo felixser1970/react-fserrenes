@@ -8,13 +8,11 @@ export const FormBuscar = (props) => {
 
   function validar(e) {
     const  bus = busRef.current.value
-    //let  info = document.querySelector('.contenedor-busqueda__resultado')
     e.preventDefault()
     if (bus.length)  props.lista(bus,e.currentTarget.tipo.value)
   }
   useEffect(() => {
     busRef.current.value = props.buscar;
-    //tipoRef.current.value = props.tipo;
 
   },[props.buscar,props.tipo])
 
@@ -46,13 +44,3 @@ export const FormBuscar = (props) => {
     
   );
 }
-
-/*
-  <Form.Check ref={tipoRef} name='tipo'  label= 'Titulo' inline  type='radio'  checked={ props.tipo === "intitle:"} onChange={()=> tipoRef.current.value = 'intitle:'}/>
-      <Form.Check ref={tipoRef}  name='tipo'  label= 'Autor' inline   type='radio'  checked={ props.tipo === "inauthor:"} onChange={()=> tipoRef.current.value = 'inauthor:'}/>
-      <Form.Check ref={tipoRef}  name='tipo'  label= 'Isbn' inline    type='radio'  checked={ props.tipo === "isbn:"} onChange={()=> tipoRef.current.value = 'isbn:'}/>
-      <Form.Check ref={tipoRef}  name='tipo'  label= 'Todos' inline   type='radio'  checked={ props.tipo === ""}  onChange={()=> tipoRef.current.value = ''}/>
-
-
-
-*/
