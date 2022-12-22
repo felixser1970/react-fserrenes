@@ -1,3 +1,8 @@
+# Nota para  Javier.
+
+Hola Javier, sé clemente con los console.log que he dejado en las condiciones .catch en las fecth a las API.
+Gracias.
+
 # Proyecto para crear una Web de Bibliotecas y consulta API
 
 Este el el proyecto fin del curso de programación Web. Se basa en React y se ha requierido que nos conectemos a una API.
