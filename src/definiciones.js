@@ -10,3 +10,5 @@ export const NUM_CHARS_PASS          = 4;
 export const NUM_CHARS_NOMBRE        = 4;
 
 export const MAX_LONG_TITULO         = 50;
+
+export const MAX_LIBROS_FAV          = 10;

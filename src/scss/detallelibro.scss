@@ -1,12 +1,12 @@
 @import './reset.scss';
 @import './basico.scss';
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1100px) {
 
   .contenedor-detalle {
     display: grid;
     grid-template-columns: 330px 1fr;
-    grid-template-rows: 500px calc(110vh - 500px);
+    grid-template-rows: 500px 1fr 100px calc(100vh - 1000px);
     //align-items: center;
     width: 60vw;
     background-color: antiquewhite;
@@ -103,16 +103,41 @@
       }
   
     }
+
+    &__favoritos {
+      grid-row: 3;
+      grid-column: 1 / span 2;
+      display : flex;
+      justify-content: center;
+      height: 90px;
+      width: 100%;
+      background-color: #dda295;
+  
+    }
+
+    &__librofavoritos {
+      grid-row: 4;
+      grid-column: 1 / span 2;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      background-color: transparent;
+      align-items: flex-start;
+      gap: 35px;
+      flex-wrap: wrap;
+      margin: 25px;
+    
+    }
   
     
   }
 }
-
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1100px) {
   .contenedor-detalle {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 500px calc(110vh - 500px);
+     grid-template-rows: 500px 1fr 100px 1fr;
     //align-items: center;
     width: 60vw;
     background-color: antiquewhite;
@@ -207,12 +232,68 @@
       }
   
     }
+
+    &__favoritos {
+      grid-row: 3;
+      grid-column: 1 / span 2;
+      display : flex;
+      justify-content: center;
+      height: 90px;
+      width: 100%;
+      background-color: #dda295;
+  
+    }
+
+    &__librofavoritos {
+      grid-row: 4;
+      grid-column: 1 / span 2;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      background-color: transparent;
+      align-items: flex-start;
+      gap: 35px;
+      flex-wrap: wrap;
+      margin: 25px;
+    
+    }
+    
+
+   
   
     
   }
 
-
+  
 
 }
 
+
+.ficha-libro-favorito {
+  display: flex;
+  justify-content:flex-start;
+  flex-direction: column;
+  gap:20px;
+  box-shadow: $whiteWtransp 0px 3px 8px;
+  background-color:rgb(178, 184, 190);
+  font-family: $gotan;
+  width: 128px;
+  height: 280px;
+
+  img {
+     margin: 0px;
+     width: 128px;
+     height: 204px;
+     transition: all 0.5s linear;
+
+  }
+  &__titulo {
+    font-size: 11px;
+    color:rgb(51, 8, 17);
+    margin: 0px 4px;
+  }
+  
+
+}
 

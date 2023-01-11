@@ -46,13 +46,3 @@ export const FormBuscar = (props) => {
     
   );
 }
-
-/*
-  <Form.Check ref={tipoRef} name='tipo'  label= 'Titulo' inline  type='radio'  checked={ props.tipo === "intitle:"} onChange={()=> tipoRef.current.value = 'intitle:'}/>
-      <Form.Check ref={tipoRef}  name='tipo'  label= 'Autor' inline   type='radio'  checked={ props.tipo === "inauthor:"} onChange={()=> tipoRef.current.value = 'inauthor:'}/>
-      <Form.Check ref={tipoRef}  name='tipo'  label= 'Isbn' inline    type='radio'  checked={ props.tipo === "isbn:"} onChange={()=> tipoRef.current.value = 'isbn:'}/>
-      <Form.Check ref={tipoRef}  name='tipo'  label= 'Todos' inline   type='radio'  checked={ props.tipo === ""}  onChange={()=> tipoRef.current.value = ''}/>
-
-
-
-*/

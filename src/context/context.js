@@ -1,27 +1,35 @@
 import React, { useContext, useState,useEffect} from "react"
+import  useLocalStorage from './useLocalStorage'
 
 
 const uContext = React.createContext();
 const  LOCAL_STORAGE_KEY = 'web.biblioteca'
 
+
 export const  Uprov = (props)  => {
 
-  let  [estadoWeb, setUsuario] = useState({usuario:'',pagina:0});
+  const  [estadoWeb, setUsuario] = useState({usuario:'',pagina:0});
   const  [menu, setMenu] = useState( [{titulo: 'Inicio', enlace: '#', private : false},
                                       {titulo: 'Madrid', enlace: '#', private: false},
                                       {titulo: 'Búsqueda I', enlace: '#', private : true},
                                       {titulo: 'Búsqueda II', enlace: '#', private : true},
                                     ]);
 
+
+  const [fav, setFav] = useLocalStorage('consulta', []);
+                                   
   // .... recupera el usuario con el que se ha logeado el usuario con el que se ha lo
   useEffect(()=> {
     const el = JSON.parse(sessionStorage.getItem( LOCAL_STORAGE_KEY) )
     if(el) setUsuario(el)
+  
   },[])
 
   useEffect(() => {
     sessionStorage.setItem(LOCAL_STORAGE_KEY,JSON.stringify(estadoWeb))
   },[estadoWeb])
+
+ 
 
  /* // ... MUY IMPORTANTE, cuando se cierra el navegador, borro el localstoraga.
   useEffect(() => {
@@ -35,6 +43,7 @@ export const  Uprov = (props)  => {
   function login(e, userp,passp) {
 
     let  cookie = ''
+    
     const par = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json'},
@@ -47,11 +56,15 @@ export const  Uprov = (props)  => {
       fetch("http://localhost:3002/login",par)
       .then(res    =>  {
         cookie = res.headers.get('Set-Cookie');
-        console.log(res.headers);
-        console.log(`MI COOKIE = ${cookie}`)
+        //console.log(res.headers);
+        //console.log(`MI COOKIE = ${cookie}`)
         return res.json()
       })
-      .then(data   =>  setUsuario({usuario:data.st, pagina:estadoWeb.pagina }))
+      .then(data  =>  {
+        localStorage.setItem('consulta', JSON.stringify([]));         // Borra  la lista de favoritos cuando se logea
+        document.getElementById('nombre').style.backgroundColor = data.st.length?  '#eeeeee' : '#F8C4B8'; // cambia el color de cuadrotxt 'pass' si hay error de acreditación.
+        setUsuario({usuario:data.st, pagina:estadoWeb.pagina })
+      })
       .catch(error =>  console.error(error))
     }
     console.log(estadoWeb)
@@ -76,7 +89,9 @@ export const  Uprov = (props)  => {
     login,
     logout,
     menu,
-    setMenu
+    setMenu,
+    fav,
+    setFav
   }} {...props} /> 
 
 }
@@ -89,3 +104,4 @@ export function useUsuario() {
 
   return context
 }
+

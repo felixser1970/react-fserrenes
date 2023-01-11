@@ -4,10 +4,13 @@ import React, { useEffect, useState } from 'react';
 import {Encabezado} from './encabezado.js'
 import {Pie} from './Pie.js'
 import '../scss/detallelibro.scss'
+import { useUsuario } from '../context/context.js';
+import { MAX_LIBROS_FAV, MAX_LONG_TITULO } from '../definiciones'
 
 export default function DetalleLibro() {
   const {id} = useParams()
   const [detalle, setDetalle] = useState({})
+  const {fav, setFav} = useUsuario()
 
   function getLibro(myid) {
     //const url = "https://www.googleapis.com/books/v1/volumes/?q=isbn:9788498382662&key=AIzaSyBCO9tGIjz2Vtm4pZwAVDj8rpi9svZ6vQc";
@@ -16,8 +19,15 @@ export default function DetalleLibro() {
     fetch(`http://localhost:3002/libro/${myid}`, { credentials: 'include' })
       .then(res => res.json())
       .then(lbr => {
-        console.log(lbr);
         if ((lbr.resp || null)) {
+          let fv = fav
+          let obj = {id: lbr.resp.id, imagen : lbr.resp.imagen.thumbnail, titulo: lbr.resp.titulo}; // PARA FAVORITOS
+          if (!(fav.filter(e => e.id === myid).length)) 
+            if (fav.length === MAX_LIBROS_FAV) { 
+              fv.shift(); fv.push(obj);
+              setFav(fv); 
+            } else setFav([...fv, obj]);
+
           setDetalle(lbr.resp);
        
         } else setDetalle({});
@@ -73,17 +83,34 @@ export default function DetalleLibro() {
                     </div>
                     <div className='contenedor-detalle__descripcion'>
                         <div className='contenedor-detalle__descripcion--texto'>
-                                  <span>Descripción :     </span>{detalle.descripcion.replace(/(<([^>]+)>)/gi, "")}
+                            <span>Descripción :     </span>{detalle.descripcion.replace(/(<([^>]+)>)/gi, "")}
                         </div>
+                    </div>
+                    <div className='contenedor-detalle__favoritos'>
+                          <h1>Principales Consultas</h1>
+                    </div>
+                    <div className='contenedor-detalle__librofavoritos'>
+                      {fav.map((e, idx) => <LibroFav key={idx}  titulo={e.titulo} imagen={e.imagen} />)}
                     </div>
                 
                 </section>
               )
         }
-        <Pie>Félix Serrenes</Pie>
+      
+        <Pie>Félix Serrenes ({fav?.length})</Pie>
       </section>
     </>
    
+  )
+}
+export const LibroFav = ({ imagen, titulo }) => {
+
+ 
+  return (
+    <section className='ficha-libro-favorito'>
+      <img src={imagen} alt={titulo} />
+      <div className='ficha-libro-favorito__titulo'>{titulo.length > MAX_LONG_TITULO ? titulo.substring(0, MAX_LONG_TITULO) + ' ...' : titulo}</div>
+    </section>
   )
 }
 

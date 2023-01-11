@@ -1,12 +1,13 @@
 const express = require('express')
 const session = require('express-session')
 var cookieParser = require('cookie-parser');
-var bp = require('body-parser');      //función para convertircaracteres especiales de HTML
+var bp = require('body-parser');              //función para convertircaracteres especiales de HTML
+require('dotenv').config();                   //variable de entorno a cargar desde el nicio
 const app = express()
 const port = 3002
-const bibliotecas = require('./datos.js').bibiotecas;   // LISTA DE BIBLIOTECAS ...
-var usuarios = require('./datos.js').usuarios;    // LISTA DE BIBLIOTECAS ...
-
+//var bibliotecas   = [];                                   //require('./datos.js').bibiotecas;   // LISTA DE BIBLIOTECAS ...
+var usuarios      = [];                                  //require('./datos.js').usuarios;    // LISTA DE BIBLIOTECAS ...
+var Cmysql      = require('./cmysql.js').BDmysql // optiene objeto de conexión.;
 
 
 
@@ -35,14 +36,50 @@ app.use(function (req, res, next) {
 
 // ----> página inicial con las fotos de las bibliotecas...
 app.get(['/bibliotecas', '/'], (req, res) => {
-  console.log(`U:${req.session.user}- T:${req.session.cookie.maxAge}`)
-  res.setHeader('Content-Type', 'text/json; charset=utf-8');
-  res.status(200).end(JSON.stringify({ b: bibliotecas, u: (req.session.user || null) })); // debo de retornar si hay login. En caso contrario devuelvo NULL
+  const dao = new Cmysql(process.env.DB_HOST,process.env.DB_USER,process.env.DB_PASS,process.env.DB_BASE);
+  var bibliotecas = [];
+  //console.log(`U:${req.session.user}- T:${req.session.cookie.maxAge}`)
+  (async () =>{
+    try {
+        bibliotecas = await dao.listaBibliotecas();
+    } 
+    catch (e){ 
+      console.log('FALLO: no se obtuvo la el Listado de las bibliotecas.'); 
+    }
+    finally {
+      res.setHeader('Content-Type', 'text/json; charset=utf-8');
+      res.status(200).end(JSON.stringify({ b: bibliotecas, u: (req.session.user || null) })); // debo de retornar si hay login. En caso contrario devuelvo NULL
+    }
+  })();
+
 })
+
+
+// ******************************************************************
+
+//      LISTEN SERVIDOR 
+
+// ******************************************************************
+
 
 app.listen(port, () => {
   const fecha = new Date(Date.now() + 0)
-  console.log(`${fecha} - Servidor Listo LOCALHOST: ${port} `)
+  const dao = new Cmysql(process.env.DB_HOST,process.env.DB_USER,process.env.DB_PASS,process.env.DB_BASE);
+
+  (async () =>{
+    try {
+        usuarios = await dao.listaUsuarios();
+        var rst = await dao.insertarUser('xxx','zzzz','Jose Perez');
+    } 
+    catch (e){ 
+      console.log('EXIT: Error conexión BBDD MYSQL.'); 
+      process.exit();
+    }
+    finally {
+      console.log(`${fecha} - Ready LOCALHOST:${port}   USUARIOS: ${usuarios.length}`)
+    }
+  })();
+
 })
 
 
@@ -73,14 +110,30 @@ app.post('/check', (req, res) => {
 
 app.post('/registro', (req, res) => {
   let vst = "";
-  //if ( (req.session || null)) req.session.destroy();
+  const dao = new Cmysql(process.env.DB_HOST,process.env.DB_USER,process.env.DB_PASS,process.env.DB_BASE);
+
   if ((req.body || null) && (req.body.user || null) && (req.body.pass || null) && (req.body.nombre || null) && req.accepts('json') && (!(usuarios.filter(e => e.user === req.body.user)).length)) {// ALTA SESSION (P0ST)
-    vst = 'ok'
-    //usuarios.push({ user: req.body.user, pass: req.body.pass, nombre: req.body.nombre})
-    usuarios = [...usuarios, { user: req.body.user, pass: req.body.pass, nombre: req.body.nombre }]
+    (async () =>{
+      try {
+          await dao.insertarUser(req.body.user, req.body.pass, req.body.nombre);
+          usuarios = [...usuarios, { user: req.body.user, pass: req.body.pass, nombre: req.body.nombre }]
+          vst = 'ok' // se añadio correctamente.
+      } 
+      catch (e){ 
+        console.log('ERROR EN LA INSERCIÓN = '+req.body.user); 
+      }
+      finally {
+        res.setHeader('Content-Type', 'text/json; charset=utf-8');
+        res.status(200).end(JSON.stringify({ st: vst }))
+      }
+    })();
+  
+  } 
+  else 
+  {
+    res.setHeader('Content-Type', 'text/json; charset=utf-8');
+    res.status(200).end(JSON.stringify({ st: vst }));
   }
-  res.setHeader('Content-Type', 'text/json; charset=utf-8');
-  res.status(200).end(JSON.stringify({ st: vst }));
 })
 
 
@@ -160,7 +213,8 @@ app.get('/libro/:id', (req, res) => {
             categoria: (lbr.volumeInfo.categories || []),
             isbn: (lbr.volumeInfo.industryIdentifiers || []),
             editorial: (lbr.volumeInfo.publisher || ''),
-            pais: (lbr.saleInfo.country || '')
+            pais: (lbr.saleInfo.country || ''),
+            id : req.params.id      // id del libro que se ha buscado
 
           }
 
