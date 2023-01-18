@@ -6,11 +6,13 @@
   .contenedor-detalle {
     display: grid;
     grid-template-columns: 330px 1fr;
-    grid-template-rows: 500px 1fr 100px calc(100vh - 1000px);
+    @media screen and (max-height: 1080px){ grid-template-rows: 500px 1fr 100px 1fr;  }
+    @media screen and (min-height: 1080px){ grid-template-rows: 500px 1fr 100px calc(100vh - 1000px);  }
     //align-items: center;
     width: 60vw;
     background-color: antiquewhite;
     gap: 15px;
+    height: 100%;
   
     &__imagen {
        display: flex;

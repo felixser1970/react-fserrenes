@@ -69,7 +69,6 @@ app.listen(port, () => {
   (async () =>{
     try {
         usuarios = await dao.listaUsuarios();
-        var rst = await dao.insertarUser('xxx','zzzz','Jose Perez');
     } 
     catch (e){ 
       console.log('EXIT: Error conexión BBDD MYSQL.'); 
