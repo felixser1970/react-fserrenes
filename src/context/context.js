@@ -6,13 +6,14 @@ const  LOCAL_STORAGE_KEY = 'web.biblioteca'
 
 export const  Uprov = (props)  => {
 
-  const  [estadoWeb, setUsuario] = useState({usuario:'',pagina:0});
+  let  [estadoWeb, setUsuario] = useState({usuario:'',pagina:0});
   const  [menu, setMenu] = useState( [{titulo: 'Inicio', enlace: '#', private : false},
-                                      {titulo: 'Madrid', enlace: '#', private: false},
-                                      {titulo: 'Búsqueda I', enlace: '#', private : true},
-                                      {titulo: 'Búsqueda II', enlace: '#', private : true},
+                                      {titulo: 'Bibliotecas Madrid Capital', enlace: '#', private: false},
+                                      {titulo: 'Consultas de Libros con Paginación', enlace: '#', private : true},
+                                      {titulo: 'Consulta de Libros con Scroll', enlace: '#', private : true},
                                     ]);
 
+  // .... recupera el usuario con el que se ha logeado el usuario con el que se ha lo
   useEffect(()=> {
     const el = JSON.parse(sessionStorage.getItem( LOCAL_STORAGE_KEY) )
     if(el) setUsuario(el)
@@ -22,6 +23,13 @@ export const  Uprov = (props)  => {
     sessionStorage.setItem(LOCAL_STORAGE_KEY,JSON.stringify(estadoWeb))
   },[estadoWeb])
 
+ /* // ... MUY IMPORTANTE, cuando se cierra el navegador, borro el localstoraga.
+  useEffect(() => {
+    window.addEventListener('beforeunload', ()=> sessionStorage.clear())
+    return () => {
+        window.removeEventListener('unload',() => alert('saliendo del navegador'))
+    }
+})*/
 
 
   function login(e, userp,passp) {
@@ -39,11 +47,14 @@ export const  Uprov = (props)  => {
       fetch("http://localhost:3002/login",par)
       .then(res    =>  {
         cookie = res.headers.get('Set-Cookie');
+        console.log(res.headers);
+        console.log(`MI COOKIE = ${cookie}`)
         return res.json()
       })
       .then(data   =>  setUsuario({usuario:data.st, pagina:estadoWeb.pagina }))
       .catch(error =>  console.error(error))
     }
+    console.log(estadoWeb)
 
   }
   
@@ -78,4 +89,3 @@ export function useUsuario() {
 
   return context
 }
-

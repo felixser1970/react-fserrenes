@@ -5,11 +5,12 @@ import { useUsuario } from '../context/context';
 import { MAX_LONG_TITULO } from '../definiciones'
 import { FormBuscar } from './FormBuscar';
 import { Link } from 'react-router-dom';
+//import 'bootstrap/dist/css/bootstrap.min.css'
 export const ListarLibros = () => {
 
   const [libros, setLibros] = useState({ idx: 0, buscar: '', tipo: '', total: 0, pag: 0, lista: [] });
-  const { estadoWeb, setUsuario } = useUsuario()        
-  const max = 40; 
+  const { estadoWeb, setUsuario } = useUsuario()          //usuario que viene del contexto
+  const max = 40;  // maximo número de elemtos que se pueden biscar
 
 
   function get_lista(bus,tipoB,inic=libros.idx,actPg=libros.pag) {
@@ -18,6 +19,7 @@ export const ListarLibros = () => {
     fetch('http://localhost:3002/consulta' + par, { credentials: 'include' })
       .then(res => res.json())
       .then(lbr => {
+        console.log(lbr);
         if ((lbr.total || null) && (lbr.total < 0)) {
           setUsuario({ usuario: '', pagina: 0 });
           window.location.assign('http://localhost:3000/bibliotecas'); // ... si la sesión ha expirado vuelvo a la página de inicio sin USUARIO logeado.
@@ -28,16 +30,16 @@ export const ListarLibros = () => {
       .catch(error => console.error(error))
   }
 
-  
+  // carga la nueva página, para ello necesita cargar los datos
   const cambioPagina =(e) => {
     let pg=0;
     e.preventDefault();
-    pg = parseInt(e.currentTarget.href.charAt(e.currentTarget.href.length - 1)); 
+    pg = parseInt(e.currentTarget.href.charAt(e.currentTarget.href.length - 1)); // obtener la página seleccionada.
     get_lista(libros.buscar,libros.tipo,pg*max,pg)
 
   }
 
-
+   // PAGINACIÓN DE LOS RESULTADOS...
   const get_paginas = (total,sel=0) => {
       let acum = []
       let maximo = Math.ceil(total / max)
@@ -75,6 +77,7 @@ export const ListarLibros = () => {
 export const Libro = ({ imagen, titulo, descripcion, autor,ident }) => {
 
   useEffect(() => {
+    console.log('Key libro=')
 
   }, [])
   return (
@@ -86,6 +89,26 @@ export const Libro = ({ imagen, titulo, descripcion, autor,ident }) => {
   )
 }
 
+/*
+export default function BooksLayouts() { return ( <> <ul> <li> <Link to='/books/1'>Book 1</Link> </li> <li> <Link to='/books/2'>Book 2</Link> </li> <li> <Link to='/books/3'>Book 3</Link> </li> <li> <Link to='/books/new'>New Book</Link> </li> </ul> <Outlet /> <div style={{ height:"15px", width:"100%", backgroundColor:"#000" }}></div> </> ) } 
+
+
+//import React from 'react' 
+import { useParams } from 'react-router-dom' 
+export default function Book() { 
+  const {id} = useParams() let bookName = '' if ( id === '1' ) { 
+    bookName = "Alicia En El País De Las Maravilas" } 
+    else if ( id === '2') { bookName = "Dune" } 
+    else { bookName = "Fahrenheit 451" } 
+    
+    
+    return ( <h1>{bookName}</h1> ) 
+  
+  } 
+
+
+
+*/
 
 
 

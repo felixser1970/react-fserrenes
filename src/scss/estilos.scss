@@ -41,7 +41,7 @@ a:link, a:visited, a:active {
     font-weight: bold;
 
     
-   
+    // título del bannerSS
     &__titulo {
         width: 70%;
         font-size: 35px;
@@ -76,7 +76,7 @@ a:link, a:visited, a:active {
           }
     }
 
-   
+    // ... zona de comentario
     &__comentario {
         font-size: 16px;
         color:$color_comment;
@@ -106,7 +106,9 @@ a:link, a:visited, a:active {
         color: #8E3020;
         width: 35%;
         margin-left: $margenPagX;
-       
+        /*@media screen and (max-width: 850px) {
+            width: 150px;
+        }*/
     }
 
     &__form {
@@ -237,7 +239,7 @@ a:link, a:visited, a:active {
          
         }
       }
-     
+      //background-color: red;
      
 
     }
@@ -263,6 +265,10 @@ a:link, a:visited, a:active {
       font-family: $roboto;
       margin: 10px 12px;
       margin-left: 20px;
+      //align-self: center;                     --> centra en el div eje horizontal GRID
+      //justify-self: center;                   --> centra en el div eje verticas  GRID
+
+        
 
     }
 }

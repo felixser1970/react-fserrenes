@@ -16,6 +16,7 @@ export default function DetalleLibro() {
     fetch(`http://localhost:3002/libro/${myid}`, { credentials: 'include' })
       .then(res => res.json())
       .then(lbr => {
+        console.log(lbr);
         if ((lbr.resp || null)) {
           setDetalle(lbr.resp);
        
@@ -86,3 +87,4 @@ export default function DetalleLibro() {
   )
 }
 
+//   {(typeof detalle.imagen !== 'undefined')?

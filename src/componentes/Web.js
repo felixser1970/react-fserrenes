@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 //import ReactDOM from 'react-dom/client';
-import { Encabezado, Usuario} from './encabezado.js'
-import { Menus} from './Menus.js'
+import { Encabezado, Usuario, Menus } from './encabezado.js'
 import { Pie } from './Pie.js'
 import { ListaBiblio } from './ListaBiblio.js';
 import { BiblioMadrid } from './BiblioMadrid';
@@ -17,16 +16,16 @@ function Web() {
   const { estadoWeb } = useUsuario();
   const miUser = <Usuario>{estadoWeb.usuario.length ? estadoWeb.usuario : 'Usuario Anónimo'}</Usuario>
 
- 
+  // ... carga el componente que se precise para esa página
   const loadComponente = (idx, par = null) => {
     var myComp = null;
 
     switch (idx) {
-      case PAGINA_INICIO:             
+      case PAGINA_INICIO:              // ...listado de las mayores bibliotecas
         myComp = <ListaBiblio />
         break;
       case PAGINA_REGISTRO:
-        myComp = <Registro />        
+        myComp = <Registro />        // ... registro de usuarios.
         break;
       case PAGINA_MADRID:
         myComp = <BiblioMadrid />
